@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testdb
+    username: tz
+    password: tz
+    hikari:
+      data-source-properties:
+        useSSL: false
+  flyway:
+    enabled: true
