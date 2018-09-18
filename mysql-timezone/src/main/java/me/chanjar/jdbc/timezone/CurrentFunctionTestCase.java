@@ -22,22 +22,16 @@ public class CurrentFunctionTestCase implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    LOGGER.info("=========TEST CURRENT DATE/TIME FUNCTIONS===========");
-
-    executeFunction("Asia/Shanghai");
-    executeFunction("Europe/Paris");
-
-    LOGGER.info("");
+    if (TestCaseUtils.isTestCase(args, "function")) {
+      doTest();
+    }
 
   }
 
+  private void doTest() {
 
+    LOGGER.info("=========TEST CURRENT DATE/TIME FUNCTIONS===========");
 
-  private void executeFunction(String timezone) {
-
-    TimeZone.setDefault(TimeZone.getTimeZone(timezone));
-
-    LOGGER.info("--------------------");
     LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
 
     LOGGER.info("Test CURRENT_DATE()\t\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_DATE()", java.sql.Date.class));

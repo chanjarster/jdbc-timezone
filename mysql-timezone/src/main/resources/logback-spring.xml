@@ -6,7 +6,6 @@
 
   <property name="SIMPLE_CONSOLE_LOG_PATTERN" value="%clr(%m%n){yellow}"/>
 
-  <!--<property name="SIMPLE_CONSOLE_LOG_PATTERN" value="${SIMPLE_CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(-&#45;&#45;){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>-->
 
   <appender name="SIMPLE_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
@@ -14,30 +13,15 @@
     </encoder>
   </appender>
 
-  <!-- 认证、授权错误日志 -->
-  <property name="SECURITY_ERROR_LOG" value="${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/security-error.log}" />
-  <appender name="SECURITY_ERROR_LOG_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <filter class="ch.qos.logback.classic.filter.LevelFilter">
-      <level>ERROR</level>
-      <onMatch>ACCEPT</onMatch>
-      <onMismatch>DENY</onMismatch>
-    </filter>
-    <encoder>
-      <pattern>${FILE_LOG_PATTERN}</pattern>
-    </encoder>
-    <file>${SECURITY_ERROR_LOG}</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${SECURITY_ERROR_LOG}.%d.zip</fileNamePattern>
-    </rollingPolicy>
-  </appender>
-
-
-
   <logger name="me.chanjar.jdbc.timezone.CurrentFunctionTestCase" level="INFO" additivity="false">
     <appender-ref ref="SIMPLE_CONSOLE" />
   </logger>
 
-  <logger name="me.chanjar.jdbc.timezone.DateTimeTypesTestCase" level="INFO" additivity="false">
+  <logger name="me.chanjar.jdbc.timezone.InsertTestCase" level="INFO" additivity="false">
+    <appender-ref ref="SIMPLE_CONSOLE" />
+  </logger>
+
+  <logger name="me.chanjar.jdbc.timezone.RetrieveTestCase" level="INFO" additivity="false">
     <appender-ref ref="SIMPLE_CONSOLE" />
   </logger>
 
