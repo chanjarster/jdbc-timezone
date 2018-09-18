@@ -1,5 +1,6 @@
 package me.chanjar.jdbc.timezone;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,19 @@ public class RetrieveTestCase implements CommandLineRunner {
 
   private void doTest() {
 
+    int paddingLength = 30;
+
     LOGGER.info("=========TEST RETRIEVE DATE/TIME TYPTES===========");
 
-    LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
+    LOGGER.info(StringUtils.rightPad("JVM Time Zone", paddingLength)
+        + ": {}", TimeZone.getDefault().getDisplayName());
 
-    LOGGER.info("Retrieve java.util.Date\t\t\t: {}",
+    LOGGER.info(StringUtils.rightPad("Retrieve java.util.Date", paddingLength)
+            + ": {}",
         jdbcTemplate.queryForObject("select created_at from test", Date.class));
 
-    LOGGER.info("Retrieve formatted string\t\t: {}",
+    LOGGER.info(StringUtils.rightPad("Retrieve formatted string", paddingLength)
+            + ": {}",
         jdbcTemplate.queryForObject("SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') from test", String.class));
   }
 

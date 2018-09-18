@@ -1,5 +1,6 @@
 package me.chanjar.jdbc.timezone;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,19 +32,23 @@ public class InsertTestCase implements CommandLineRunner {
 
   private void doTest() throws ParseException {
 
+    int paddingLength = 30;
     jdbcTemplate.execute("delete from test");
 
     LOGGER.info("=========TEST INSERT DATE/TIME TYPTES===========");
-    LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
+    LOGGER.info(StringUtils.rightPad("JVM Time Zone", paddingLength)
+        + ": {}", TimeZone.getDefault().getDisplayName());
 
     String localDateString = "2018-09-14 10:00:00";
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date localDate = sdf.parse(localDateString);
 
-    LOGGER.info("java.util.Date\t\t\t\t\t\t\t\t: {}", localDateString);
+    LOGGER.info(StringUtils.rightPad("java.util.Date", paddingLength)
+        + ": {}", localDateString);
 
-    LOGGER.info("Insert into timestamp column\t: {}", localDateString);
+    LOGGER.info(StringUtils.rightPad("Insert into timestamp column", paddingLength)
+        + ": {}", localDateString);
     jdbcTemplate.update("insert into test values(?)", localDate);
 
   }

@@ -1,5 +1,6 @@
 package me.chanjar.jdbc.timezone;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,14 +29,26 @@ public class CurrentFunctionTestCase implements CommandLineRunner {
 
   public void doTest() {
 
-    LOGGER.info("=========TEST CURRENT DATE/TIME FUNCTIONS===========");
-    LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
+    int paddingLength = 25;
 
-    LOGGER.info("Test CURRENT_DATE\t\t\t\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_DATE from dual", String.class));
-    LOGGER.info("Test CURRENT_TIMESTAMP\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_TIMESTAMP from dual", String.class));
-    LOGGER.info("Test LOCALTIMESTAMP\t\t\t\t\t: {}", jdbcTemplate.queryForObject("select LOCALTIMESTAMP from dual", String.class));
-    LOGGER.info("Test SYSDATE\t\t\t\t\t\t\t\t: {}", jdbcTemplate.queryForObject("select SYSDATE from dual", String.class));
-    LOGGER.info("Test SYSTIMESTAMP\t\t\t\t\t\t: {}", jdbcTemplate.queryForObject("select SYSTIMESTAMP from dual", String.class));
+    LOGGER.info("=========TEST CURRENT DATE/TIME FUNCTIONS===========");
+    LOGGER.info(StringUtils.rightPad("JVM Time Zone", paddingLength)
+        + ": {}", TimeZone.getDefault().getDisplayName());
+
+    LOGGER.info(StringUtils.rightPad("Test CURRENT_DATE", paddingLength)
+        + ": {}", jdbcTemplate.queryForObject("select CURRENT_DATE from dual", String.class));
+
+    LOGGER.info(StringUtils.rightPad("Test CURRENT_TIMESTAMP", paddingLength)
+        + ": {}", jdbcTemplate.queryForObject("select CURRENT_TIMESTAMP from dual", String.class));
+
+    LOGGER.info(StringUtils.rightPad("Test LOCALTIMESTAMP", paddingLength)
+        + ": {}", jdbcTemplate.queryForObject("select LOCALTIMESTAMP from dual", String.class));
+
+    LOGGER.info(StringUtils.rightPad("Test SYSDATE", paddingLength)
+        + ": {}", jdbcTemplate.queryForObject("select SYSDATE from dual", String.class));
+
+    LOGGER.info(StringUtils.rightPad("Test SYSTIMESTAMP", paddingLength)
+        + ": {}", jdbcTemplate.queryForObject("select SYSTIMESTAMP from dual", String.class));
 
   }
 }
