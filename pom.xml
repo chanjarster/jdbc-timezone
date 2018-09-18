@@ -6,6 +6,7 @@
     <groupId>me.chanjar.jdbc-timezone</groupId>
     <artifactId>db-timezone-aggregator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <modules>
       <module>mysql-timezone</module>

@@ -1,5 +1,11 @@
 # jdbc-timezone
 
+以下文章的源代码：
+
+* [数据库时区那些事儿 - Oracle的时区处理](https://chanjarster.github.io/post/oracle-timezone/)
+* [数据库时区那些事儿 - MySQL的时区处理](https://chanjarster.github.io/post/mysql-timezone/)
+
+这个例子代码是Spring Boot项目，打包之后按照以下方式运行：
 
 ```bash
 # 插入数据
