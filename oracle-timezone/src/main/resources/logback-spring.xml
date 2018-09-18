@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+  <property name="SIMPLE_CONSOLE_LOG_PATTERN" value="%clr(%m%n){yellow}"/>
+
+  <appender name="SIMPLE_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${SIMPLE_CONSOLE_LOG_PATTERN}</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="me.chanjar.jdbc.timezone.CurrentFunctionTestCase" level="INFO" additivity="false">
+    <appender-ref ref="SIMPLE_CONSOLE"/>
+  </logger>
+
+  <logger name="me.chanjar.jdbc.timezone.InsertTestCase" level="INFO" additivity="false">
+    <appender-ref ref="SIMPLE_CONSOLE"/>
+  </logger>
+
+  <logger name="me.chanjar.jdbc.timezone.RetrieveTestCase" level="INFO" additivity="false">
+    <appender-ref ref="SIMPLE_CONSOLE"/>
+  </logger>
+
+
+  <logger name="ROOT" level="INFO" additivity="false">
+    <appender-ref ref="CONSOLE"/>
+  </logger>
+
+</configuration>

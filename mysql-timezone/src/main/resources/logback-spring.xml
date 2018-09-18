@@ -37,7 +37,7 @@
     <appender-ref ref="SIMPLE_CONSOLE" />
   </logger>
 
-  <logger name="me.chanjar.jdbc.timezone.TimestampTestCase" level="INFO" additivity="false">
+  <logger name="me.chanjar.jdbc.timezone.DateTimeTypesTestCase" level="INFO" additivity="false">
     <appender-ref ref="SIMPLE_CONSOLE" />
   </logger>
 

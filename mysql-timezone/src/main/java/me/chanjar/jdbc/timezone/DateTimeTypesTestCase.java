@@ -13,9 +13,9 @@ import java.util.Date;
 import java.util.TimeZone;
 
 @Component
-public class TimestampTestCase implements CommandLineRunner {
+public class DateTimeTypesTestCase implements CommandLineRunner {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(TimestampTestCase.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(DateTimeTypesTestCase.class);
 
   @Autowired
   private JdbcTemplate jdbcTemplate;
@@ -36,7 +36,7 @@ public class TimestampTestCase implements CommandLineRunner {
 
     TimeZone.setDefault(TimeZone.getTimeZone(timezone));
 
-    LOGGER.info("Insert data, Time Zone\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
+    LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
 
     String localDateString = "2018-09-14 10:00:00";
 
@@ -57,12 +57,12 @@ public class TimestampTestCase implements CommandLineRunner {
     TimeZone.setDefault(TimeZone.getTimeZone(timezone));
 
     LOGGER.info("--------------------");
-    LOGGER.info("Retrieve data, Time Zone\t\t\t: {}", TimeZone.getDefault().getDisplayName());
+    LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
 
-    LOGGER.info("Retrieve java.util.Date\t\t\t\t: {}",
+    LOGGER.info("Retrieve java.util.Date\t\t\t: {}",
         jdbcTemplate.queryForObject("select created_at from test", Date.class));
 
-    LOGGER.info("Retrieve formatted string\t\t\t: {}",
+    LOGGER.info("Retrieve formatted string\t\t: {}",
         jdbcTemplate.queryForObject("SELECT DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') from test", String.class));
   }
 

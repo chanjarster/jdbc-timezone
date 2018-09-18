@@ -24,7 +24,7 @@ public class CurrentFunctionTestCase implements CommandLineRunner {
 
     LOGGER.info("=========TEST CURRENT DATE/TIME FUNCTIONS===========");
 
-//    executeFunction("Asia/Shanghai");
+    executeFunction("Asia/Shanghai");
     executeFunction("Europe/Paris");
 
     LOGGER.info("");
@@ -38,11 +38,11 @@ public class CurrentFunctionTestCase implements CommandLineRunner {
     TimeZone.setDefault(TimeZone.getTimeZone(timezone));
 
     LOGGER.info("--------------------");
-    LOGGER.info("Call functions, Time Zone\t\t\t: {}", TimeZone.getDefault().getDisplayName());
+    LOGGER.info("JVM Time Zone\t\t\t\t\t\t\t: {}", TimeZone.getDefault().getDisplayName());
 
-    LOGGER.info("Test CURRENT_DATE()\t\t\t\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_DATE()", java.sql.Date.class));
-    LOGGER.info("Test CURRENT_TIME()\t\t\t\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_TIME()", Time.class));
-    LOGGER.info("Test CURRENT_TIMESTAMP()\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_TIMESTAMP()", Date.class));
+    LOGGER.info("Test CURRENT_DATE()\t\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_DATE()", java.sql.Date.class));
+    LOGGER.info("Test CURRENT_TIME()\t\t\t\t: {}", jdbcTemplate.queryForObject("select CURRENT_TIME()", Time.class));
+    LOGGER.info("Test CURRENT_TIMESTAMP()\t: {}", jdbcTemplate.queryForObject("select CURRENT_TIMESTAMP()", Date.class));
 
   }
 

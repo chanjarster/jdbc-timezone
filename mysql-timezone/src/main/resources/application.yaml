@@ -7,5 +7,6 @@ spring:
     hikari:
       data-source-properties:
         useSSL: false
+      minimum-idle: 1
   flyway:
     enabled: true
